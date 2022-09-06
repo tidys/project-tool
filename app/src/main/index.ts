@@ -8,6 +8,9 @@ app.on("ready", () => {
         webPreferences: {
             webSecurity: false,
             nodeIntegration: true, // 允许在渲染进程使用node特性
+            nodeIntegrationInWorker: true,
+            nodeIntegrationInSubFrames: true,
+            contextIsolation: false,
         },
         backgroundColor: "#ffffff",
     });
