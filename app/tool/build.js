@@ -157,7 +157,7 @@ chain.plugin("vue_env").use(webpack.DefinePlugin, [
         __VUE_PROD_DEVTOOLS__: false,
     },
 ]);
-
+chain.devtool('source-map')
 let config = chain.toConfig();
 const fallback = {
     fs: false,
