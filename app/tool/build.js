@@ -40,7 +40,7 @@ function getExternal(defaultModules) {
 }
 
 chain.target("node");
-
+chain.mode('development')
 chain.resolve.extensions.add(".ts").add(".vue").add(".js").add(".json");
 
 chain.entry("main").add(Path.join(__dirname, "../src/main/index.ts"));
@@ -140,7 +140,10 @@ chain.module
             lib: ["es6", "dom"],
         },
     });
-
+// const f = require('tsconfig-paths-webpack-plugin')
+// chain.plugin('tsconfig').use(f, [{
+//     configFile: Path.join(rootDir, 'tsconfig.json')
+// }]).end();
 chain.plugin("vue").use(VueLoaderPlugin).end();
 chain
     .plugin("extract-css")
@@ -193,5 +196,6 @@ let compiler = webpack(config, (error, status) => {
     status.compilation.emittedAssets.forEach((asset) => {
         logInfo(asset)
     })
+
     console.log("build succeed");
 });

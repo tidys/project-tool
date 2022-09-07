@@ -1,8 +1,12 @@
-import { BrowserWindow, app } from "electron";
+import { BrowserWindow, app, ipcMain } from "electron";
 import * as Path from "path";
 import * as Fs from 'fs';
+import * as remoteMain from '@electron/remote/main'
+import { dialog } from '../core/dialog';
 
 app.on("ready", () => {
+    remoteMain.initialize();
+    dialog.init();
     const win = new BrowserWindow({
         resizable: true,
         webPreferences: {
